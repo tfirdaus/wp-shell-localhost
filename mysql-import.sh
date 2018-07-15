@@ -14,7 +14,7 @@ else
     echo "📥 Importing into the '${DB_NAME}' database"
 
 	# shellcheck disable=SC2086
-    docker-compose exec database mysql \
+    docker-compose exec -T database mysql \
         --default-character-set=utf8mb4 \
         -u${DB_USER} \
         -p${DB_PASSWORD} \
