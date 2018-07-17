@@ -125,7 +125,6 @@ replace_urls() {
 		dexec wp search-replace "$SITEURL_ESC" "$1" --precise --recurse-objects --all-tables --skip-themes --skip-plugins --skip-packages
 		echo "Your site URL: $1"
 	else
-		WP_SITE_URL="http://${WP_SITE_DOMAIN}:${WP_PUBLISHED_PORT}"
-		echo "Your site URL: ${WP_SITE_URL}${WP_SITE_SUBDIR}"
+		echo "Your site URL: ${SITEURL_ESC}"
 	fi
 }
