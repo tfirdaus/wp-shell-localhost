@@ -27,3 +27,6 @@
 | `install.sh <file>` | Install WordPress, and Plugins and Themes specified in the `.env` |
 | `init-apache.sh` | Script to override entrypoint in WordPress `php*-apache` Docker images |
 | `exec.sh` | A wrapper script to run arbitrary shell script in a running WordPress Docker container |
+| `logs.sh` | View the logs in all running containers |
+| `logs.sh wordpress` | View the logs in the WordPress (running) container |
+| `logs.sh -f` | View and follow the log output in all running containers |
