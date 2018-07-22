@@ -24,7 +24,5 @@ fi
 # If it is initiated directly.
 if [ -z "$WP_LOCKER_START" ]; then
 	WP_SITE_URL="http://${WP_SITE_DOMAIN}:${WP_PUBLISHED_PORT}"
-
-	echo -e "WordPress is not yet installed.\\nLoad the site URL to get started."
 	echo "Your site URL: ${WP_SITE_URL}${WP_SITE_SUBDIR}"
 fi
