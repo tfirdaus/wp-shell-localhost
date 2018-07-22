@@ -10,7 +10,7 @@ done < <(grep WP_ .env)
 
 PARAMS=""
 if [ -z "$*" ]; then
-    PARAMS="--build"
+    PARAMS="-d --build ${WP_SERVICE:-wordpress}"
 fi
 
 # Build containers
