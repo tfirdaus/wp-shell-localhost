@@ -52,13 +52,17 @@ install_wp() {
 			if ! dexec wp "$1" is-installed "$WP_REPO" && [[ "$1" = "plugin" ]]; then
 				PLUGINS_INSTALLED+=("$WP_REPO")
 			elif [[ "$1" = "plugin" ]]; then
-				echo "⚠️ '${WP_REPO}' plugin already installed."
+				echo -e "\\n👍 Plugin '${WP_REPO}' is already installed."
+				echo "🚥 Activating plugin '${WP_REPO}'..."
+				dexec wp plugin activate "$WP_REPO"
 			fi
 
 			if ! dexec wp "$1" is-installed "$WP_REPO" && [[ "$1" = "theme" ]] && [[ -z $THEME_INSTALLED ]]; then
 				THEME_INSTALLED=$WP_REPO
 			elif [[ "$1" = "theme" ]]; then
-				echo "⚠️ '${WP_REPO}' theme already installed."
+				echo -e "\\n👍 Theme '${WP_REPO}' is already installed."
+				echo "🚥 Activating plugin '${WP_REPO}'..."
+				dexec wp theme activate "$WP_REPO"
 			fi
 		done
 

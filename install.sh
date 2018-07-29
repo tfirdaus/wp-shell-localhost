@@ -56,7 +56,7 @@ if ! dexec wp core is-installed &>/dev/null; then
 		--admin_password=${WP_ADMIN_PASSWORD:-password} \
 		--admin_email=${WP_ADMIN_EMAIL:-admin@localhost.local}
 else
-	echo "⚠️ WordPress Core already installed."
+	echo "👍 WordPress Core already installed."
 fi
 
 if [[ -n $INSTALL_PLUGINS ]] && [[ $INSTALL_PLUGINS -ge 1 ]]; then
