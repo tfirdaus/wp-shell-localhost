@@ -29,7 +29,7 @@ ssh() {
 	if [[ ! -z "$1" ]]; then
 		DOCKER_SERVICE=$1
 	fi
-	docker-compose exec -u www-data "${DOCKER_SERVICE}" sh
+	dexec "${DOCKER_SERVICE}" sh
 }
 
 ssh_root() {
@@ -37,7 +37,7 @@ ssh_root() {
 	if [[ ! -z "$1" ]]; then
 		DOCKER_SERVICE=$1
 	fi
-	docker-compose exec "${DOCKER_SERVICE}" sh
+	dexec_root "${DOCKER_SERVICE}" sh
 }
 
 install_wp() {
