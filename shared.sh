@@ -12,6 +12,18 @@ dexec() {
 	fi
 }
 
+# An alias command to run "docker-compose exec".
+# Run a command in a running container as the root.
+dexec_root() {
+	DOCKER_SERVICES=$(docker-compose config --services)
+
+	if [[ ! -z "$1" ]] && [[ $(echo "${DOCKER_SERVICES[@]}" | grep -w "$1") == "$1" ]]; then
+		docker-compose exec "$1" "${@:2}"
+	else
+		docker-compose exec wordpress "$@"
+	fi
+}
+
 ssh() {
 	DOCKER_SERVICE=wordpress
 	if [[ ! -z "$1" ]]; then
