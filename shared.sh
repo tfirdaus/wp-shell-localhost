@@ -1,24 +1,11 @@
 #!/bin/bash
 
-contains() {
-    local n=$#
-    local value=${!n}
-    for ((i=1;i < $#;i++)) {
-        if [ "${!i}" == "${value}" ]; then
-            echo "y"
-            return 0
-        fi
-    }
-    echo "n"
-    return 1
-}
-
 # An alias command to run "docker-compose exec".
 # Run a command in a running container as the www-data user.
 dexec() {
-	read -r -a DOCKER_SERVICES <<< "$(docker-compose config --services)"
+	DOCKER_SERVICES=$(docker-compose config --services)
 
-	if [[ ! -z "$1" ]] && [[ $(contains "${DOCKER_SERVICES[@]}" "$1") == "y" ]]; then
+	if [[ ! -z "$1" ]] && [[ $(echo "${DOCKER_SERVICES[@]}" | grep -w "$1") == "$1" ]]; then
 		docker-compose exec -u www-data "$1" "${@:2}"
 	else
 		docker-compose exec -u www-data wordpress "$@"
