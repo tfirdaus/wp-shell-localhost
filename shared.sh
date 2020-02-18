@@ -130,4 +130,6 @@ replace_urls() {
 	else
 		echo "Your site URL: ${SITEURL_ESC}"
 	fi
+
+	echo "Don't forget to add ${WP_SITE_DOMAIN} to the computer hosts file pointing to 127.0.0.1"
 }
